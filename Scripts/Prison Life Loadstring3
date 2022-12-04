@@ -1,6 +1,134 @@
 local DiscordLib =
     loadstring(game:HttpGet "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/discord")()
 
+local win = DiscordLib:Window("discord library")
+
+local serv = win:Server("Universal", "http://www.roblox.com/asset/?id=6031075938")
+
+local misc = serv:Channel("Misc")
+
+misc:Button(
+    "Btools",
+    function()
+        a = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+        a.BinType = 2
+        b = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+        b.BinType = 3
+        c = Instance.new("HopperBin", game.Players.LocalPlayer.Backpack)
+        c.BinType = 4
+    end
+)
+
+local tgls = serv:Channel("Toggles")
+
+tgls:Toggle(
+    "Auto-Farm",
+    false,
+    function(bool)
+        print(bool)
+    end
+)
+
+local sldrs = serv:Channel("Movement")
+
+local sldr =
+    sldrs:Slider(
+    "Walk Speed",
+    0,
+    1000,
+    16,
+    function(Slidr)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Slidr
+    end
+)
+
+sldrs:Button(
+    "Reset to default",
+    function()
+        sldr:Change(16)
+    end
+)
+
+local sldr =
+    sldrs:Slider(
+    "Jump Height",
+    0,
+    1000,
+    50,
+    function(Slidr1)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Slidr1
+    end
+)
+
+sldrs:Button(
+    "Reset to default",
+    function()
+        sldr:Change(50)
+    end
+)
+
+local drops = serv:Channel("Dropdowns")
+
+local drop =
+    drops:Dropdown(
+    "Pick me!",
+    {"Option 1", "Option 2", "Option 3", "Option 4", "Option 5"},
+    function(bool)
+        print(bool)
+    end
+)
+
+drops:Button(
+    "Clear",
+    function()
+        drop:Clear()
+    end
+)
+
+drops:Button(
+    "Add option",
+    function()
+        drop:Add("Option")
+    end
+)
+
+local clrs = serv:Channel("Colorpickers")
+
+clrs:Colorpicker(
+    "ESP Color",
+    Color3.fromRGB(255, 1, 1),
+    function(t)
+        print(t)
+    end
+)
+
+local textbs = serv:Channel("Textboxes")
+
+textbs:Textbox(
+    "Gun power",
+    "Type here!",
+    true,
+    function(t)
+        print(t)
+    end
+)
+
+local lbls = serv:Channel("Labels")
+
+lbls:Label("This is just a label.")
+
+local bnds = serv:Channel("Binds")
+
+bnds:Bind(
+    "Kill bind",
+    Enum.KeyCode.RightShift,
+    function()
+        print("Killed everyone!")
+    end
+)
+
+serv:Channel("by JumPiesS#1069")
+
 if game.PlaceId == 155615604 then
     local serv = win:Server("Prison Life", "")
 
@@ -92,3 +220,5 @@ if game.PlaceId == 155615604 then
             Workspace.Remote.TeamEvent:FireServer("Medium stone grey")
         end
     )
+
+end
